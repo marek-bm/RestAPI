@@ -21,7 +21,6 @@ target/
 .mvn
 HELP.md
 mvnw.cmd
-README.md
 mvnw
 
 ### NetBeans ###
