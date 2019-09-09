@@ -1,11 +1,6 @@
 package com.mj.restapi.dao;
 
 import com.mj.restapi.model.Item;
-import org.springframework.stereotype.Component;
-
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
-import javax.transaction.Transactional;
 import java.util.List;
 import java.util.Map;
 

@@ -13,7 +13,7 @@ import java.util.*;
 
 @Repository
 @Transactional
-public class ItemDaoImpl implements  ItemDao{
+public class ItemDaoImpl implements ItemDao {
 
     @PersistenceContext
     EntityManager entityManager;
@@ -28,8 +28,8 @@ public class ItemDaoImpl implements  ItemDao{
 
     @Override
     public Item findById(long id) {
-        Item item=entityManager.find(Item.class, id);
-        if(item==null){
+        Item item = entityManager.find(Item.class, id);
+        if (item == null) {
             throw new NoSuchElementException();
         }
         return item;
@@ -37,9 +37,9 @@ public class ItemDaoImpl implements  ItemDao{
 
     @Override
     public List<Item> findAll() {
-       String jpq="SELECT i from Item i";
-        Query query=entityManager.createQuery(jpq);
-        List<Item> items=query.getResultList();
+        String jpq = "SELECT i from Item i";
+        Query query = entityManager.createQuery(jpq);
+        List<Item> items = query.getResultList();
         Collections.shuffle(items);
         return items;
     }
@@ -51,13 +51,13 @@ public class ItemDaoImpl implements  ItemDao{
 
     @Override
     public void deleteById(long id) {
-        Item item=findById(id);
+        Item item = findById(id);
         entityManager.remove(item);
     }
 
     @Override
     public void patchById(long id, Map<String, Object> updates) {
-        Item item=findById(id);
+        Item item = findById(id);
         itemService.updateItem(item, updates);
         entityManager.merge(item);
     }

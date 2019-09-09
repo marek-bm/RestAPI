@@ -1,53 +1,35 @@
 package com.mj.restapi.model;
 
+import lombok.Data;
+
+import javax.annotation.sql.DataSourceDefinition;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import java.sql.Timestamp;
+import java.util.Date;
 
 @Entity
+@Data
 public class Item {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @NotNull (message = "error cannot be null")
-    @Size( min = 2, message = "Message must be longer than 2 chars")
+    @NotNull (message = "Name cannot be null")
+    @Size( min = 2, message = "Name must be longer than 2 chars")
     private String name;
-    private String secondName;
-    private int age;
 
+    private Timestamp created;
 
-    public Long getId() {
-        return id;
+    public Item() {
+        this.created= new Timestamp(System.currentTimeMillis());
     }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getSecondName() {
-        return secondName;
-    }
-
-    public void setSecondName(String secondName) {
-        this.secondName = secondName;
-    }
-
-    public int getAge() {
-        return age;
-    }
-
-    public void setAge(int age) {
-        this.age = age;
+    public Item(String name) {
+        this.name=name;
+        this.created= new Timestamp(System.currentTimeMillis());
     }
 }
 
