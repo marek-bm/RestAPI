@@ -28,10 +28,7 @@ public class ItemDaoImpl implements ItemDao {
 
     @Override
     public Item findById(long id) {
-        Item item = entityManager.find(Item.class, id);
-        if (item == null) {
-            throw new NoSuchElementException();
-        }
+        Item item=Optional.ofNullable(entityManager.find(Item.class,id)).orElseThrow(NoSuchElementException::new);
         return item;
     }
 
