@@ -48,13 +48,15 @@ public class ItemController {
 
     @PostMapping("/items")
     @ResponseStatus(HttpStatus.CREATED)
-    public void saveItem(@Valid @RequestBody Item i) {
+    public Resource<Item> saveItem(@Valid @RequestBody Item i) {
         itemDao.save(i);
+        return resourceAssembler.toResource(i);
     }
 
     @PutMapping("/items")
-    public void updateItem(@Valid @RequestBody Item item) {
+    public Resource<Item> updateItem(@Valid @RequestBody Item item) {
         itemDao.update(item);
+        return  resourceAssembler.toResource(item);
     }
 
     @DeleteMapping("/items/{id}")
@@ -63,7 +65,8 @@ public class ItemController {
     }
 
     @PatchMapping("/items/{id}")
-    public void patchUpdateItem(@PathVariable long id, @RequestBody Map<String, Object> fields) {
+    public Resource<Item> patchUpdateItem(@PathVariable long id, @RequestBody Map<String, Object> fields) {
         itemDao.patchById(id, fields);
+        return resourceAssembler.toResource(itemDao.findById(id));
     }
 }
