@@ -49,7 +49,7 @@ http://localhost:8080/api/items/
 Technology used:
 <ul>
 <li> Spring Boot + Web / Data / Hateoas starters </li>
-<li> Hibernate as JPA provider </li>
+<li> Hibernate </li>
 <li> H2 database</li>
 <li> Lombok </li>
 </ul>
