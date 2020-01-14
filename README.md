@@ -1,7 +1,7 @@
 # RestAPI
 
 This mini service was created realizing REST concept. Endpoints expose the data in JSON/HAL format. <br> 
-It performs CRUD operations on the Item entity.<br>
+It supports following HTTP requests on the Item entity.<br>
 http://localhost:8080/api/items/
 
 <table>
